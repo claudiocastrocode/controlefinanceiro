@@ -1,0 +1,35 @@
+{
+    "name": "claudiocastrocode/controlefinanceiro",
+    "description": "Projeto - Desenvolvendo um Gestor Financeiro",
+    "minimum-stability": "stable",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Claudio Castro",
+            "email": "claudiocastro.code@outlook.com",
+            "role": "Designer and Developer",
+            "homepage": "https://www.linkedin.com/in/claudio-castro-2a9396221/"
+        }
+    ],
+    "config": {
+        "vendor-dir": "vendor"
+    },
+    "autoload": {
+        "psr-4": {
+            "Source\\": "source/"
+        },
+        "files": [
+            "source/Core/Config.php",
+            "source/Helpers/Functions.php"
+        ]
+    },
+    "require": {
+        "php": "^7.2",
+        "ext-pdo": "^7.2",
+        "coffeecode/router": "1.0.*",
+        "coffeecode/datalayer": "1.1.*"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "*"
+    }
+}
