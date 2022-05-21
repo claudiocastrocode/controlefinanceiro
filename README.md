@@ -21,7 +21,6 @@
 3. Remover (Apenas este; Este e os próximos; Todos)
 
 4. Normalizar (Ao fazer requisição em uma data futura, os lançamentos fixos são adicionados automaticamente.
-Para não sobrecarregar o banco de dados, essa adição não passa de 10 anos)
 
 - Lançamento Parcelado
 
