@@ -4,11 +4,20 @@ namespace Source\Financial;
 
 use Source\Models\AppFinancialList;
 
+/**
+ * FixedInvoice
+ */
 class FixedInvoice
 {
     protected $launche;
     protected $dateToSql;
-
+    
+    /**
+     * __construct
+     *
+     * @param  array $launche
+     * @return void
+     */
     public function __construct(array $launche)
     {
         $this->launche = $launche;
@@ -20,7 +29,12 @@ class FixedInvoice
                 : null)
         );
     }
-
+    
+    /**
+     * createFixed
+     *
+     * @return void
+     */
     public function createFixed(): void
     {
         $dueDate = $this->dateToSql;
@@ -64,7 +78,12 @@ class FixedInvoice
             }
         }
     }
-
+    
+    /**
+     * editFixed
+     *
+     * @return void
+     */
     public function editFixed(): void
     {
         $invoice = (new AppFinancialList())->findById($this->launche["id"]);
@@ -145,7 +164,12 @@ class FixedInvoice
             }
         }
     }
-
+    
+    /**
+     * normalizeFixed
+     *
+     * @return void
+     */
     public function normalizeFixed(): void
     {
         // Obtém as datas mais recentes dos lançamentos agrupados por reference_id
@@ -203,7 +227,13 @@ class FixedInvoice
             }
         }
     }
-
+    
+    /**
+     * fixedMirror
+     *
+     * @param  mixed $fixedMirror
+     * @return void
+     */
     private function fixedMirror(object $fixedMirror): void
     {
         $fixedMirror->description = $this->launche["description"];
@@ -211,8 +241,13 @@ class FixedInvoice
         $fixedMirror->due_date = $fixedMirror->due_date;
         $fixedMirror->save();
     }
-
-    public function removeFixed()
+    
+    /**
+     * removeFixed
+     *
+     * @return void
+     */
+    public function removeFixed(): void
     {
         $invoice = (new AppFinancialList())->findById($this->launche["id"]);
         $invoices = $invoice

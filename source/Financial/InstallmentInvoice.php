@@ -4,11 +4,20 @@ namespace Source\Financial;
 
 use Source\Models\AppFinancialList;
 
+/**
+ * InstallmentInvoice
+ */
 class InstallmentInvoice
 {
     protected $launche;
     protected $dateToSql;
-
+    
+    /**
+     * __construct
+     *
+     * @param  array $launche
+     * @return void
+     */
     public function __construct(array $launche)
     {
         $this->launche = $launche;
@@ -16,7 +25,12 @@ class InstallmentInvoice
             ? convertDateToSql($this->launche["due_date"])
             : null);
     }
-
+    
+    /**
+     * createInstallment
+     *
+     * @return void
+     */
     public function createInstallment()
     {
         $dueDate = $this->dateToSql;
@@ -50,7 +64,12 @@ class InstallmentInvoice
                 $referenceId = $invoice->id;
         }
     }
-
+    
+    /**
+     * editInstallment
+     *
+     * @return void
+     */
     public function editInstallment()
     {
         $invoice = (new AppFinancialList())->findById($this->launche["id"]);
@@ -144,7 +163,13 @@ class InstallmentInvoice
             }
         }
     }
-
+    
+    /**
+     * installmentPrimary
+     *
+     * @param  mixed $installmentPrimary
+     * @return void
+     */
     private function installmentPrimary(object $installmentPrimary): void
     {
         $installmentPrimary->description = $this->launche["description"];
@@ -155,7 +180,12 @@ class InstallmentInvoice
             . date("d", strtotime($this->dateToSql));
         $installmentPrimary->save();
     }
-
+    
+    /**
+     * removeInstallment
+     *
+     * @return void
+     */
     public function removeInstallment()
     {
         $invoice = (new AppFinancialList())->findById($this->launche["id"]);

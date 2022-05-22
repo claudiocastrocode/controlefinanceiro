@@ -4,11 +4,20 @@ namespace Source\Financial;
 
 use Source\Models\AppFinancialList;
 
+/**
+ * SingleInvoice
+ */
 class SingleInvoice
 {
     protected $launche;
     protected $dateToSql;
-
+    
+    /**
+     * __construct
+     *
+     * @param  array $launche
+     * @return void
+     */
     public function __construct(array $launche)
     {
         $this->launche = $launche;
@@ -16,7 +25,12 @@ class SingleInvoice
             ? convertDateToSql($this->launche["due_date"])
             : null);
     }
-
+    
+    /**
+     * createSingle
+     *
+     * @return void
+     */
     public function createSingle()
     {
         $invoice = new AppFinancialList();
@@ -30,7 +44,12 @@ class SingleInvoice
             < strtotime(date("Y-m")) ? "paid" : "unpaid");
         $invoice->save();
     }
-
+    
+    /**
+     * editSingle
+     *
+     * @return void
+     */
     public function editSingle()
     {
         $invoice = (new AppFinancialList())->findById($this->launche["id"]);
@@ -39,7 +58,12 @@ class SingleInvoice
         $invoice->due_date = $this->dateToSql;
         $invoice->save();
     }
-
+    
+    /**
+     * removeSingle
+     *
+     * @return void
+     */
     public function removeSingle()
     {
         $invoice = (new AppFinancialList())->findById($this->launche["id"]);

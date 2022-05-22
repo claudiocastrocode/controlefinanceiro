@@ -7,6 +7,9 @@ use Source\Financial\FixedInvoice;
 use Source\Financial\InstallmentInvoice;
 use Source\Financial\SingleInvoice;
 
+/**
+ * FinancialAuth
+ */
 class FinancialAuth extends Controller
 {
     public function __construct($router)
@@ -31,7 +34,13 @@ class FinancialAuth extends Controller
                 echo "O tipo deve ser Único, Fixo ou Parcelado";
         }
     }
-
+    
+    /**
+     * editInvoice
+     *
+     * @param  array $data
+     * @return void
+     */
     public function editInvoice(array $data)
     {
         # Validações de Input
@@ -49,7 +58,13 @@ class FinancialAuth extends Controller
                 echo "O tipo deve ser Único, Fixo ou Parcelado";
         }
     }
-
+    
+    /**
+     * removeInvoice
+     *
+     * @param  array $data
+     * @return void
+     */
     public function removeInvoice(array $data)
     {
         # Validações de Input
