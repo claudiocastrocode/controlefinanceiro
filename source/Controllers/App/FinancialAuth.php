@@ -11,12 +11,24 @@ use Source\Financial\SingleInvoice;
  * FinancialAuth
  */
 class FinancialAuth extends Controller
-{
+{    
+    /**
+     * __construct
+     *
+     * @param  mixed $router
+     * @return void
+     */
     public function __construct($router)
     {
         parent::__construct($router);
     }
-
+    
+    /**
+     * createInvoice
+     *
+     * @param  array $data
+     * @return void
+     */
     public function createInvoice(array $data)
     {
         # Validações de Input
@@ -80,7 +92,12 @@ class FinancialAuth extends Controller
                 break;
         }
     }
-
+    
+    /**
+     * validacoesDeInput
+     *
+     * @return void
+     */
     private function validacoesDeInput()
     {
         # code...
