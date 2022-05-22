@@ -1,0 +1,18 @@
+CREATE TABLE `app_financial_list` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `description` varchar(250) NOT NULL,
+  `amount` decimal(13,2) NOT NULL,
+  `cash_flow` varchar(100) NOT NULL,
+  `due_date` date NOT NULL,
+  `repeat_type` varchar(100) NOT NULL,
+  `period` varchar(100) NOT NULL DEFAULT 'month',
+  `installment_number` int(11) DEFAULT NULL,
+  `status` varchar(100) NOT NULL DEFAULT 'unpaid',
+  `reference_id` int(11) DEFAULT NULL,
+  `currency` varchar(100) NOT NULL DEFAULT 'BRL',
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  PRIMARY KEY (`id`),
+  KEY `reference_id` (`reference_id`),
+  CONSTRAINT `reference_id` FOREIGN KEY (`reference_id`) REFERENCES `app_financial_list` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=3563 DEFAULT CHARSET=utf8mb4;
